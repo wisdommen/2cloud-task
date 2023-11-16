@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wisdommee.cloud2.mapper.CarInfoTableMapper">
+
+    <resultMap id="BaseResultMap" type="com.wisdommee.cloud2.entity.po.CarInfoTable">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="saleCategory" column="sale_category" jdbcType="VARCHAR"/>
+            <result property="make" column="make" jdbcType="VARCHAR"/>
+            <result property="model" column="model" jdbcType="VARCHAR"/>
+            <result property="branch" column="branch" jdbcType="VARCHAR"/>
+            <result property="odometer" column="odometer" jdbcType="INTEGER"/>
+            <result property="overallCondition" column="overall_condition" jdbcType="VARCHAR"/>
+            <result property="yearGroup" column="year_group" jdbcType="INTEGER"/>
+            <result property="soldDate" column="sold_date" jdbcType="TIMESTAMP"/>
+            <result property="fuelTypeDescription" column="fuel_type_description" jdbcType="VARCHAR"/>
+            <result property="gearTypeDescription" column="gear_type_description" jdbcType="VARCHAR"/>
+            <result property="description" column="description" jdbcType="VARCHAR"/>
+            <result property="bodyStyleDescription" column="body_style_description" jdbcType="VARCHAR"/>
+            <result property="driveDescription" column="drive_description" jdbcType="VARCHAR"/>
+            <result property="vehicleDescription" column="vehicle_description" jdbcType="VARCHAR"/>
+            <result property="conditionDescription" column="condition_description" jdbcType="VARCHAR"/>
+            <result property="optionsAccessories" column="options_accessories" jdbcType="VARCHAR"/>
+            <result property="logBooks" column="log_books" jdbcType="VARCHAR"/>
+            <result property="keysStatus" column="keys_status" jdbcType="VARCHAR"/>
+            <result property="tyreFrontNearCondition" column="tyre_front_near_condition" jdbcType="VARCHAR"/>
+            <result property="tyreFrontOffCondition" column="tyre_front_off_condition" jdbcType="VARCHAR"/>
+            <result property="tyreRearNearCondition" column="tyre_rear_near_condition" jdbcType="VARCHAR"/>
+            <result property="tyreRearOffCondition" column="tyre_rear_off_condition" jdbcType="VARCHAR"/>
+            <result property="tyreSpareCondition" column="tyre_spare_condition" jdbcType="VARCHAR"/>
+            <result property="color" column="color" jdbcType="VARCHAR"/>
+            <result property="engineDescription" column="engine_description" jdbcType="VARCHAR"/>
+            <result property="gearNum" column="gear_num" jdbcType="INTEGER"/>
+            <result property="cylinders" column="cylinders" jdbcType="INTEGER"/>
+            <result property="doorNum" column="door_num" jdbcType="INTEGER"/>
+            <result property="seatNum" column="seat_num" jdbcType="INTEGER"/>
+            <result property="badgeDescription" column="badge_description" jdbcType="VARCHAR"/>
+            <result property="fuelDeliveryDescription" column="fuel_delivery_description" jdbcType="VARCHAR"/>
+            <result property="inductionDescription" column="induction_description" jdbcType="VARCHAR"/>
+            <result property="ownerManualStatus" column="owner_manual_status" jdbcType="VARCHAR"/>
+            <result property="saleType" column="sale_type" jdbcType="VARCHAR"/>
+            <result property="division" column="division" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,sale_category,make,
+        model,branch,odometer,
+        overall_condition,year_group,sold_date,
+        fuel_type_description,gear_type_description,description,
+        body_style_description,drive_description,vehicle_description,
+        condition_description,options_accessories,log_books,
+        keys_status,tyre_front_near_condition,tyre_front_off_condition,
+        tyre_rear_near_condition,tyre_rear_off_condition,tyre_spare_condition,
+        color,engine_description,gear_num,
+        badge_description,fuel_delivery_description,induction_description,
+        owner_manual_status,sale_type,division,cylinders,door_num,seat_num
+    </sql>
+
+    <select id="getUserList" resultMap="BaseResultMap">
+        SELECT *
+        FROM car_info_table
+    </select>
+</mapper>
