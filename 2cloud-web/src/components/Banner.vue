@@ -4,7 +4,7 @@
       <p class="banner-text align-self-center pr-2">
         Need a Prices People Pay Valuation Report?
       </p>
-      <v-btn class="btn text-red" rounded>Get One Now</v-btn>
+      <v-btn class="btn text-red" variant="flat" rounded>Get One Now</v-btn>
     </v-row>
   </v-container>
 </template>

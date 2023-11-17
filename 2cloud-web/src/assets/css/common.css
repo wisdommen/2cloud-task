@@ -51,3 +51,11 @@ html, body {
     justify-content: flex-end;
     padding-right: 28px;
 }
+
+.button-bg {
+    background: #ff5a60;
+}
+
+.button-text {
+    color: #fff;
+}

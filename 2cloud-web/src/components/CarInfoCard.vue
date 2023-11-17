@@ -3,7 +3,7 @@
     <v-card-text>
       <v-container class="d-flex align-self-center">
         <v-row class="justify-space-between">
-          <v-col :cols="$vuetify.display.smAndDown || grid_view ? '12' : '7'">
+          <v-col :cols="$vuetify.display.mdAndDown || grid_view ? '12' : '7'">
             <v-row class="pb-3">
               <strong class="mr-1">{{ carInfo.VehicleDescription }}</strong>
               <p>{{ carInfo.Description }}</p>
@@ -29,7 +29,7 @@
               </svg>
               <p class="mr-1">{{ new Date(carInfo.Sold_Date).toLocaleString() }}</p>
             </v-row>
-            <v-row v-if="$vuetify.display.smAndDown || grid_view">
+            <v-row v-if="$vuetify.display.mdAndDown || grid_view">
               <v-row class="pl-2 pb-2">
                 <v-chip class="rounded-lg mr-1" size="small">{{ carInfo.SaleCategory }}</v-chip>
                 <v-chip class="rounded-lg mr-1" size="small">{{ carInfo.Odometer }} Kms</v-chip>
@@ -56,7 +56,7 @@
               </v-row>
             </v-row>
           </v-col>
-          <v-col :cols="$vuetify.display.smAndDown || grid_view ? '12' : '4'">
+          <v-col :cols="$vuetify.display.mdAndDown || grid_view ? '12' : '4'">
             <v-row class="d-flex justify-end">
               <v-col cols="12" lg="8" md="8" sm="8">
                 <v-btn class="btn button-text button-bg" :block="true" variant="flat">
@@ -64,9 +64,7 @@
                 </v-btn>
               </v-col>
               <v-col cols="12" lg="4" md="4" sm="4">
-                <v-btn class="btn" :block="true" variant="outlined" color="primary">
-                  See More
-                </v-btn>
+                <CarDisplayLayer :carInfo="carInfo"/>
               </v-col>
             </v-row>
           </v-col>
@@ -77,8 +75,12 @@
 </template>
 
 <script>
+import CarDisplayLayer from "@/components/CarDisplayLayer.vue";
 export default {
   name: "AppBar",
+  components:{
+    CarDisplayLayer
+  },
   data: () => ({
     grid: false,
     carInfo: {
@@ -128,11 +130,5 @@ export default {
 }
 </script>
 <style>
-.button-bg {
-  background: #ff5a60;
-}
 
-.button-text {
-  color: #fff;
-}
 </style>

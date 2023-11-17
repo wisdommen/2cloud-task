@@ -4,15 +4,20 @@
       <div v-for="each in Object.keys(filters)" class="selector-wrapper">
         <v-menu v-if="each === 'year' || each === 'odometer'" :close-on-content-click="false">
           <template v-slot:activator="{ props }">
-            <v-btn v-bind="props" class="btn text-start" variant="outlined" height="40" block style="background: white">
-              <v-row class="">
-                <div class="text-grey text-subtitle-1 justify-start">
-                  {{ filters[each].title }}
-                </div>
-                <div class="text-end">
-                  <v-icon>mdi-menu-down</v-icon>
-                </div>
-              </v-row>
+            <v-btn
+              v-bind="props"
+              class="btn d-flex"
+              variant="outlined"
+              height="40"
+              block
+              style="background: white; border-color: #939393; justify-content: space-between !important;"
+            >
+              <p class="text-grey-darken-1 text-subtitle-1 me-auto">
+                {{ filters[each].title }}
+              </p>
+              <template v-slot:append>
+                <v-icon class="align-self-center text-grey-darken-1" size="x-large">mdi-menu-down</v-icon>
+              </template>
             </v-btn>
           </template>
           <v-sheet width="260" class="pa-5">
@@ -29,15 +34,20 @@
         </v-menu>
         <v-menu v-else-if="each === 'sale_date'" :close-on-content-click="false">
           <template v-slot:activator="{ props }">
-            <v-btn v-bind="props" class="btn text-start" variant="outlined" height="40" style="background: white" block>
-              <v-row class="">
-                <div class="text-grey text-subtitle-1 justify-start">
+            <v-btn
+              v-bind="props"
+              class="btn d-flex"
+              variant="outlined"
+              height="40"
+              style="background: white; border-color: #939393; justify-content: space-between !important;"
+              block
+            >
+                <p class="text-grey-darken-1 text-subtitle-1">
                   {{ filters[each].title }}
-                </div>
-                <div>
-                  <v-icon>mdi-menu-down</v-icon>
-                </div>
-              </v-row>
+                </p>
+                <template v-slot:append>
+                  <v-icon class="align-self-center text-grey-darken-1" size="x-large">mdi-menu-down</v-icon>
+                </template>
             </v-btn>
           </template>
           <v-sheet width="260" class="pa-5">
@@ -104,7 +114,7 @@
       <div class="btn-primary px-2">
         <v-btn :block="true" class="btn btn-color-primary" height="40">Clear Filter</v-btn>
       </div>
-      <div class="btn-subscribe px-2">
+      <div class="btn-subscribe px-2 hidden-md-and-down">
         <v-btn :block="true" class="btn btn-color-red" height="40">Subscribe to Generate Summary Report</v-btn>
       </div>
     </v-row>
@@ -252,8 +262,10 @@ export default {
   padding-bottom: 5px;
 }
 
-.selector {
-  height: 40px;
+@media screen and (max-width: 1128px) {
+  .selector-wrapper {
+    width: 100%;
+  }
 }
 
 .btn-primary {
@@ -279,5 +291,4 @@ export default {
   font-weight: 500!important;
   border: 1px solid #ff5a60!important;
 }
-
 </style>

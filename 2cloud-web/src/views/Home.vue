@@ -14,7 +14,7 @@
       <SearchFilters class="hidden-small mb-n5"/>
     </v-row>
     <v-row>
-      <CurrentStatics name="Audi" :record_count="100" :avg_age="100" :avg_km="12" :avg_price="200" class="hidden-small pl-5" @viewModeChange="changeViewMode"/>
+      <CurrentStatics name="Audi" :record_count="100" :avg_age="100" :avg_km="12" :avg_price="200" class="pl-5" @viewModeChange="changeViewMode"/>
     </v-row>
     <v-row>
       <Banner class="mx-2"/>
