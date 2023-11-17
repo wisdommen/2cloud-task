@@ -28,7 +28,7 @@ html, body {
     text-transform: unset !important;
 }
 
-.header-wrapper{
+.header-wrapper {
     position: relative;
     max-width: 1200px;
     margin-left: auto;

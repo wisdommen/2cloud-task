@@ -14,7 +14,8 @@
       <SearchFilters class="hidden-small mb-n5" @search="setFilter" @clear="clear"/>
     </v-row>
     <v-row>
-      <CurrentStatics :name="search_filter" :record_count="100" :avg_age="100" :avg_km="12" :avg_price="200" class="pl-5"
+      <CurrentStatics :name="search_filter" :record_count="100" :avg_age="100" :avg_km="12" :avg_price="200"
+                      class="pl-5"
                       @viewModeChange="changeViewMode" @search="setFilter" @clear="clear"/>
     </v-row>
     <v-row>

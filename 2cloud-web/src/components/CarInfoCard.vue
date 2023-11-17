@@ -11,20 +11,21 @@
             <v-row v-if="$vuetify.display.mdAndUp && !grid_view">
               <v-chip class="rounded-lg mr-1" size="small">{{ carInfo.saleCategory }}</v-chip>
               <v-chip class="rounded-lg mr-1" size="small">{{ carInfo.odometer }} Kms</v-chip>
-              <v-chip class="rounded-lg mr-1" size="small" v-if="carInfo.branch">{{ carInfo.branch }}</v-chip>
+              <v-chip v-if="carInfo.branch" class="rounded-lg mr-1" size="small">{{ carInfo.branch }}</v-chip>
               <v-img
                 :src="carInfo.overallCondition === 'Excellent' ?
               'good-condition.png' : (carInfo.overallCondition === 'Average' ?
               'average-condition.png' : 'poor-condition.png')"
-                max-width="30"
                 class="mr-1"
+                max-width="30"
               />
               <p class="mr-1">{{ carInfo.overallCondition }} Condition</p>
-              <svg id="event-24px" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                   viewBox="0 0 24 24" class="mr-1">
-                <path id="Path_13" data-name="Path 13" d="M0,0H24V24H0Z" fill="none"></path>
-                <path id="Path_14" data-name="Path 14"
+              <svg id="event-24px" class="mr-1" height="24" viewBox="0 0 24 24"
+                   width="24" xmlns="http://www.w3.org/2000/svg">
+                <path id="Path_13" d="M0,0H24V24H0Z" data-name="Path 13" fill="none"></path>
+                <path id="Path_14"
                       d="M17,12H12v5h5ZM16,1V3H8V1H6V3H5A1.991,1.991,0,0,0,3.01,5L3,19a2,2,0,0,0,2,2H19a2.006,2.006,0,0,0,2-2V5a2.006,2.006,0,0,0-2-2H18V1Zm3,18H5V8H19Z"
+                      data-name="Path 14"
                       fill="#0098dc"></path>
               </svg>
               <p class="mr-1">{{ new Date(carInfo.soldDate).toLocaleString() }}</p>
@@ -33,7 +34,7 @@
               <v-row class="pl-2 pb-2">
                 <v-chip class="rounded-lg mr-1" size="small">{{ carInfo.saleCategory }}</v-chip>
                 <v-chip class="rounded-lg mr-1" size="small">{{ carInfo.odometer }} Kms</v-chip>
-                <v-chip class="rounded-lg mr-1" size="small" v-if="carInfo.branch">{{ carInfo.branch }}</v-chip>
+                <v-chip v-if="carInfo.branch" class="rounded-lg mr-1" size="small">{{ carInfo.branch }}</v-chip>
               </v-row>
               <v-row class="pl-2 pb-2">
                 <v-img
@@ -41,15 +42,16 @@
               carInfo.overallCondition === 'Excellent' ?
               'good-condition.png' : (carInfo.overallCondition === 'Average' ?
               'average-condition.png' : 'poor-condition.png')"
-                  max-width="30"
                   class="mr-1"
+                  max-width="30"
                 />
                 <p class="mr-1">{{ carInfo.overallCondition }} Condition</p>
-                <svg id="event-24px" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                     viewBox="0 0 24 24" class="mr-1">
-                  <path id="Path_13" data-name="Path 13" d="M0,0H24V24H0Z" fill="none"></path>
-                  <path id="Path_14" data-name="Path 14"
+                <svg id="event-24px" class="mr-1" height="24" viewBox="0 0 24 24"
+                     width="24" xmlns="http://www.w3.org/2000/svg">
+                  <path id="Path_13" d="M0,0H24V24H0Z" data-name="Path 13" fill="none"></path>
+                  <path id="Path_14"
                         d="M17,12H12v5h5ZM16,1V3H8V1H6V3H5A1.991,1.991,0,0,0,3.01,5L3,19a2,2,0,0,0,2,2H19a2.006,2.006,0,0,0,2-2V5a2.006,2.006,0,0,0-2-2H18V1Zm3,18H5V8H19Z"
+                        data-name="Path 14"
                         fill="#0098dc"></path>
                 </svg>
                 <p class="mr-1">{{ new Date(carInfo.soldDate).toLocaleString() }}</p>
@@ -59,7 +61,7 @@
           <v-col :cols="$vuetify.display.mdAndDown || grid_view ? '12' : '4'">
             <v-row class="d-flex justify-end">
               <v-col cols="12" lg="8" md="8" sm="8">
-                <v-btn class="btn button-text button-bg" :block="true" variant="flat">
+                <v-btn :block="true" class="btn button-text button-bg" variant="flat">
                   Subscribe to Reveal Price
                 </v-btn>
               </v-col>
@@ -76,9 +78,10 @@
 
 <script>
 import CarDisplayLayer from "@/components/CarDisplayLayer.vue";
+
 export default {
   name: "AppBar",
-  components:{
+  components: {
     CarDisplayLayer
   },
   data: () => ({
@@ -95,9 +98,7 @@ export default {
       required: true
     }
   },
-  methods: {
-
-  }
+  methods: {}
 }
 </script>
 <style>

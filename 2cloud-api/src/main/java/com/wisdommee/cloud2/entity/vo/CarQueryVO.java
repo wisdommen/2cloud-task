@@ -1,5 +1,6 @@
 package com.wisdommee.cloud2.entity.vo;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.wisdommee.cloud2.annotation.SearchField;
 import com.wisdommee.cloud2.entity.bo.CompareType;
 import lombok.Data;
@@ -34,8 +35,8 @@ public class CarQueryVO {
     @SearchField(value = "odometer", type = CompareType.LTE)
     private String max_odometer;
     private int page;
-    private String sortBy;
-    private String orderBy;
+    private String sort_by;
+    private String order_by;
     @SearchField("drive_description")
     private String driveDescription;
     @SearchField("engine_description")
@@ -44,6 +45,7 @@ public class CarQueryVO {
     private String min_sold_date;
     @SearchField(value = "sold_date", type = CompareType.LTE)
     private String max_sold_date;
+    @SearchField(value = "description", type = CompareType.LIKE)
     private String keyword;
     @SearchField("division")
     private String division;

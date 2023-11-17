@@ -1,5 +1,5 @@
 // Composables
-import { createRouter, createWebHistory } from 'vue-router'
+import {createRouter, createWebHistory} from 'vue-router'
 
 const routes = [
   {
@@ -23,7 +23,7 @@ const router = createRouter({
   routes,
 })
 
-router.afterEach((to)=> {
+router.afterEach((to) => {
   const query = to.query
   const prefix = query ? query["make"] + ' ' + query["model"] + ' Used Car Price' : 'Home'
   const suffix = ' | Price People Pay'

@@ -5,12 +5,12 @@
         <v-menu v-if="each === 'year' || each === 'odometer'" :close-on-content-click="false">
           <template v-slot:activator="{ props }">
             <v-btn
-              v-bind="props"
-              class="btn d-flex"
-              variant="outlined"
-              height="40"
               block
+              class="btn d-flex"
+              height="40"
               style="background: white; border-color: #939393; justify-content: space-between !important;"
+              v-bind="props"
+              variant="outlined"
             >
               <p class="text-grey-darken-1 text-subtitle-1 me-auto">
                 {{ filters[each].title }}
@@ -20,19 +20,19 @@
               </template>
             </v-btn>
           </template>
-          <v-sheet width="260" class="pa-5">
+          <v-sheet class="pa-5" width="260">
             <v-container>
               <v-row>
-                <v-text-field v-model="filters[each].items[0]" label="min" variant="outlined" class="pr-2"/>
+                <v-text-field v-model="filters[each].items[0]" class="pr-2" label="min" variant="outlined"/>
                 <v-text-field v-model="filters[each].items[1]" label="max" variant="outlined"/>
               </v-row>
               <v-row>
                 <v-range-slider
-                  :strict="true"
                   v-model="filters[each].items"
-                  :step="1"
-                  :min="filters[each].value.min"
                   :max="filters[each].value.max"
+                  :min="filters[each].value.min"
+                  :step="1"
+                  :strict="true"
                 ></v-range-slider>
               </v-row>
             </v-container>
@@ -41,12 +41,12 @@
         <v-menu v-else-if="each === 'sale_date'" :close-on-content-click="false">
           <template v-slot:activator="{ props }">
             <v-btn
-              v-bind="props"
+              block
               class="btn d-flex"
-              variant="outlined"
               height="40"
               style="background: white; border-color: #939393; justify-content: space-between !important;"
-              block
+              v-bind="props"
+              variant="outlined"
             >
               <p class="text-grey-darken-1 text-subtitle-1">
                 {{ filters[each].title }}
@@ -56,22 +56,22 @@
               </template>
             </v-btn>
           </template>
-          <v-sheet width="260" class="pa-5">
+          <v-sheet class="pa-5" width="260">
             <v-container>
               <v-row>
                 <v-radio-group v-model="filters[each].select">
-                  <v-radio label="Last 7 days" :value="7"/>
-                  <v-radio label="Last 30 days" :value="30"/>
-                  <v-radio label="Last 90 days" :value="90"/>
+                  <v-radio :value="7" label="Last 7 days"/>
+                  <v-radio :value="30" label="Last 30 days"/>
+                  <v-radio :value="90" label="Last 90 days"/>
                 </v-radio-group>
               </v-row>
               <v-row>
-                <v-text-field :readonly="true" label="Min" v-model="filters[each].display_date.min"
+                <v-text-field v-model="filters[each].display_date.min" :readonly="true" label="Min"
                               variant="underlined">
                   <template v-slot:append>
                     <v-menu :close-on-content-click="false">
                       <template v-slot:activator="{ props }">
-                        <v-btn v-bind="props" variant="plain" size="small">
+                        <v-btn size="small" v-bind="props" variant="plain">
                           <v-icon>mdi-calendar-today</v-icon>
                         </v-btn>
                       </template>
@@ -82,12 +82,12 @@
                 </v-text-field>
               </v-row>
               <v-row>
-                <v-text-field :readonly="true" label="Max" v-model="filters[each].display_date.max"
+                <v-text-field v-model="filters[each].display_date.max" :readonly="true" label="Max"
                               variant="underlined">
                   <template v-slot:append>
                     <v-menu :close-on-content-click="false">
                       <template v-slot:activator="{ props }">
-                        <v-btn v-bind="props" variant="plain" size="small">
+                        <v-btn size="small" v-bind="props" variant="plain">
                           <v-icon>mdi-calendar-today</v-icon>
                         </v-btn>
                       </template>
@@ -100,14 +100,15 @@
             </v-container>
           </v-sheet>
         </v-menu>
-        <v-select v-else :label="filters[each].title" :items="filters[each].items" class="btn"
-                  variant="outlined" density="compact" bg-color="white" v-model="selectedFilter[each]"/>
+        <v-select v-else v-model="selectedFilter[each]" :items="filters[each].items" :label="filters[each].title"
+                  bg-color="white" class="btn" density="compact" variant="outlined"/>
       </div>
     </v-row>
     <v-row>
       <div class="text-filed pl-1 pr-2">
-        <v-text-field placeholder="e.g. Metallic Paint,Power front seats,Power Sunroof, ..." variant="outlined"
-                      density="compact" bg-color="white" v-model="selectedFilter.keyword"/>
+        <v-text-field v-model="selectedFilter.keyword" bg-color="white"
+                      density="compact" placeholder="e.g. Metallic Paint,Power front seats,Power Sunroof, ..."
+                      variant="outlined"/>
       </div>
       <div class="btn-primary px-2">
         <v-btn :block="true" class="btn btn-color-primary" height="40" @click="doSearch">Apply Filter</v-btn>
