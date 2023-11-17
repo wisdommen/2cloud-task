@@ -1,9 +1,9 @@
 <template>
   <v-container>
-    <v-row class="justify-space-between px-3 hidden-md-and-down">
+    <v-row class="justify-space-between px-3 hidden-md-and-down" v-if="name">
       <v-row>
         <div class="row align-self-center bg-blue px-5 py-2">
-          {{ name }} Stats:
+          {{ name.make }} {{ name.model}} Stats:
         </div>
         <div class="row align-self-center px-5 py-2 bg-white">
           <svg xmlns="http://www.w3.org/2000/svg" width="17" height="14" viewBox="0 0 17 14" class="align-self-center pr-1">
@@ -59,8 +59,8 @@
       <v-row class="d-flex" style="width: 100vw">
         <v-col cols="12" class="bg-blue">
           <v-row class="d-flex justify-space-between">
-            <div class="align-self-center pl-4">
-              {{ name }} Stats:
+            <div class="align-self-center pl-4" v-if="name">
+              {{ name.make }} {{ name.model}} Stats:
             </div>
             <v-btn variant="text" class="btn" @click="openFilters = !openFilters" :ripple="false">
               <v-icon>mdi-filter</v-icon>
@@ -69,7 +69,7 @@
           </v-row>
         </v-col>
       </v-row>
-      <v-row class="bg-white d-flex" style="width: 100vw">
+      <v-row class="bg-white d-flex" style="width: 100vw" v-if="name">
         <v-col class="px-5 py-2 bg-white align-self-center">
           <v-row class="row">
             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="14" viewBox="0 0 17 14" class="align-self-center pr-1">
@@ -98,7 +98,7 @@
           </v-row>
         </v-col>
       </v-row>
-      <v-row class="bg-white d-flex" style="width: 100vw">
+      <v-row class="bg-white d-flex" style="width: 100vw" v-if="name">
         <v-col class="px-5 py-2 bg-white align-self-center">
           <v-row class="row">
             <svg xmlns="http://www.w3.org/2000/svg" width="30.094" height="16" viewBox="0 0 30.094 16" class="align-self-center pr-1">
@@ -134,7 +134,7 @@
     </v-container>
     <v-overlay v-model="openFilters">
       <v-sheet style="width: 65vw" class="overflow-y-auto" max-height="100vh" elevation="20">
-        <SearchFilters/>
+        <SearchFilters @search="setFilter" @clear="clear"/>
       </v-sheet>
     </v-overlay>
   </v-container>
@@ -148,7 +148,8 @@ export default {
   components: {SearchFilters},
   data: () => ({
     grid_view: false,
-    openFilters: false
+    openFilters: false,
+    filters: null
   }),
   props: {
     name: {
@@ -171,6 +172,16 @@ export default {
       type: Number,
       default: 0
     }
+  },
+  methods: {
+    setFilter(value) {
+      this.openFilters = false
+      this.$emit('search', value)
+    },
+    clear() {
+      this.openFilters = false
+      this.$emit('clear')
+    },
   },
   watch: {
     'grid_view': {

@@ -23,9 +23,49 @@
                 <v-col>
                   <table class="vehicle-info-table">
                     <tbody>
-                    <tr v-for="(value, key) in vehicleInfo" :key="key">
-                      <td class="label">{{ key }}</td>
-                      <td class="value">{{ value }}</td>
+                    <tr>
+                      <td class="label">Make</td>
+                      <td class="value">{{carInfo.make ? carInfo.make : '--'}}</td>
+                    </tr>
+                    <tr>
+                      <td class="label">Model</td>
+                      <td class="value">{{carInfo.model ? carInfo.model : '--'}}</td>
+                    </tr>
+                    <tr>
+                      <td class="label">Year</td>
+                      <td class="value">{{carInfo.yearGroup ? carInfo.yearGroup : '--'}}</td>
+                    </tr>
+                    <tr>
+                      <td class="label">Description</td>
+                      <td class="value">{{carInfo.description ? carInfo.description : '--'}}</td>
+                    </tr>
+                    <tr>
+                      <td class="label">Colour</td>
+                      <td class="value">{{carInfo.colour ? carInfo.colour : '--'}}</td>
+                    </tr>
+                    <tr>
+                      <td class="label">Engine</td>
+                      <td class="value">{{carInfo.engineDescription +' '+ carInfo.fuelDeliveryDescription + ' ' + carInfo.inductionDescription+ ' ' + carInfo.fuelTypeDescription}}</td>
+                    </tr>
+                    <tr>
+                      <td class="label">Transmission</td>
+                      <td class="value">{{carInfo.gearNum + ' ' + carInfo.badgeDescription + ' ' + carInfo.gearTypeDescription}}</td>
+                    </tr>
+                    <tr>
+                      <td class="label">Odometer</td>
+                      <td class="value">{{carInfo.odometer ? carInfo.odometer + ' Kms' : '--'}}</td>
+                    </tr>
+                    <tr>
+                      <td class="label">Sale Date</td>
+                      <td class="value">{{carInfo.soldDate ? new Date(carInfo.soldDate).toLocaleDateString() : '--'}}</td>
+                    </tr>
+                    <tr>
+                      <td class="label">Accessories</td>
+                      <td class="value">{{carInfo.optionsAccessories ? carInfo.optionsAccessories : '--'}}</td>
+                    </tr>
+                    <tr>
+                      <td class="label">Auction Information</td>
+                      <td class="value">--</td>
                     </tr>
                     </tbody>
                   </table>
@@ -39,7 +79,8 @@
                   color="white"
                   class="rounded ma-1"
                   style="background: #ff5a60!important;"
-                  v-for="(item, key) in conditionDescription.split(',')"
+                  v-if="carInfo.conditionDescription"
+                  v-for="(item, key) in carInfo.conditionDescription.split(',')"
                   :key="key"
                 >
                   <div class="text-white">{{item}}</div>
@@ -55,9 +96,25 @@
                   <v-row>
                     <table class="vehicle-tyre-table">
                       <tbody>
-                      <tr v-for="(value, key) in tyreCondition" :key="key">
-                        <td class="label">{{ key }}</td>
-                        <td class="value">{{ value }}</td>
+                      <tr>
+                        <td class="label">Left Front</td>
+                        <td class="value">{{carInfo.tyreFrontNearCondition ? carInfo.tyreFrontNearCondition : '--'}}</td>
+                      </tr>
+                      <tr>
+                        <td class="label">Left Rear</td>
+                        <td class="value">{{carInfo.tyreFrontOffCondition ? carInfo.tyreFrontOffCondition : '--'}}</td>
+                      </tr>
+                      <tr>
+                        <td class="label">Right Front</td>
+                        <td class="value">{{carInfo.tyreRearNearCondition ? carInfo.tyreRearNearCondition : '--'}}</td>
+                      </tr>
+                      <tr>
+                        <td class="label">Right Rear</td>
+                        <td class="value">{{carInfo.tyreRearOffCondition ? carInfo.tyreRearOffCondition : '--'}}</td>
+                      </tr>
+                      <tr>
+                        <td class="label">Spare</td>
+                        <td class="value">{{carInfo.tyreSpareCondition ? carInfo.tyreSpareCondition : '--'}}</td>
                       </tr>
                       </tbody>
                     </table>
@@ -72,9 +129,17 @@
                   <v-row>
                     <table class="vehicle-tyre-table">
                       <tbody>
-                      <tr v-for="(value, key) in keysAndBooks" :key="key">
-                        <td class="label">{{ key }}</td>
-                        <td class="value">{{ value }}</td>
+                      <tr>
+                        <td class="label">Log Books</td>
+                        <td class="value">{{carInfo.logBooks ? carInfo.logBooks : '--'}}</td>
+                      </tr>
+                      <tr>
+                        <td class="label">Owners Manual</td>
+                        <td class="value">{{carInfo.ownerManualStatus ? carInfo.ownerManualStatus : '--'}}</td>
+                      </tr>
+                      <tr>
+                        <td class="label">Keys</td>
+                        <td class="value">{{carInfo.keysStatus ? carInfo.keysStatus : '--'}}</td>
                       </tr>
                       </tbody>
                     </table>
@@ -92,6 +157,30 @@ export default {
   data: () => ({
     overlay: false,
     vehicleInfo: {
+      make: {
+        title: 'Make',
+        value: 'Audi'
+      },
+      model: {
+        title: 'Model',
+        value: 'A1'
+      },
+      yearGroup: {
+        title: 'Year',
+        value: '2012'
+      },
+      description:{
+        title: 'Description',
+        value: '8X MY12 Ambition Hatchback 3dr Man 6sp 1.4T'
+      },
+      colour: {
+        title: 'Colour',
+        value: 'Silver'
+      },
+      engineDescription: {
+        title: 'Engine',
+        value: '1.4 Direct Injection Turbo Petrol'
+      },
       'Make': 'Audi',
       'Model': 'A1',
       'Year': '2012',

@@ -4,6 +4,10 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.wisdommee.cloud2.entity.po.CarInfoTable;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.wisdommee.cloud2.entity.vo.CarQueryVO;
+import com.wisdommee.cloud2.entity.vo.FilterQueryVO;
+
+import java.util.List;
+import java.util.Set;
 
 /**
 * @author Ling Bao
@@ -15,4 +19,10 @@ public interface CarInfoTableService extends IService<CarInfoTable> {
     Page<CarInfoTable> getCarList(Page<CarInfoTable> page);
 
     Page<CarInfoTable> searchCarInfo(Page<CarInfoTable> page, CarQueryVO carQueryVO);
+
+    FilterQueryVO searchFilters(String make, String model);
+
+    Set<String> getMakes();
+
+    Set<String> getModels(String make);
 }

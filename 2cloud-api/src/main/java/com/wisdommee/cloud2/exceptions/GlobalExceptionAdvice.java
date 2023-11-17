@@ -60,13 +60,13 @@ public class GlobalExceptionAdvice {
         return ResponseEntity.error(400, message);
     }
 
-    @ExceptionHandler(Exception.class)
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public ResponseEntity<String> handleException(Exception e) {
-        log.error(e.getLocalizedMessage());
-        String message = e.getMessage();
-        return ResponseEntity.error(500, message);
-    }
+//    @ExceptionHandler(Exception.class)
+//    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+//    public ResponseEntity<String> handleException(Exception e) {
+//        log.error(e.getLocalizedMessage());
+//        String message = e.getMessage();
+//        return ResponseEntity.error(500, message);
+//    }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseBody
