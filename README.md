@@ -1,10 +1,10 @@
 # 2cloud-task
 
-### 2Cloud Web is the front end writen using Vue.js
+### 2Cloud Web is the frontend written using Vue.js
 
 run with ```vite dev```
 
-### 2Cloud Api is the backend writen using Springboot
+### 2Cloud Api is the backend written using Springboot
 
 build with ```mvn clean package```
 
